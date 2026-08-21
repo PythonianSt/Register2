@@ -1,0 +1,67 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ลงทะเบียนรับบริการ</title><link rel="stylesheet" href="/app.css"></head><body><main class="wrap">
+<div class="card"><h1>ลงทะเบียนรับบริการ</h1><div class="muted">โปรดให้ข้อมูลครบถ้วนเพื่อประโยชน์ในการรับบริการอย่างปลอดภัย</div></div>
+<form id="form" class="card">
+<h2>ประเภทผู้รับบริการ</h2>
+<div class="choice-row">
+  <label class="choice"><input id="student" type="checkbox" checked> นิสิต</label>
+  <label class="choice"><input id="staff" type="checkbox"> บุคลากร</label>
+</div>
+<h2>สถานะการใช้บริการ</h2>
+<div class="choice-row" id="patientStatusGroup">
+  <label class="choice"><input type="checkbox" name="patient_status_choice" value="คนไข้ใหม่"> คนไข้ใหม่</label>
+  <label class="choice"><input type="checkbox" name="patient_status_choice" value="เคยใช้บริการ"> เคยใช้บริการ</label>
+  <label class="choice"><input type="checkbox" name="patient_status_choice" value="ไม่แน่ใจ"> ไม่แน่ใจ</label>
+</div>
+<h2>ข้อมูลประจำตัว</h2><div class="grid">
+<div><label>รหัสนิสิต / รหัสบุคลากร *</label><input name="student_or_staff_id" required></div>
+<div><label>อีเมลติดต่อ</label><input name="email" type="email"></div>
+<div><label>เลขบัตรประชาชน</label><input name="national_id" inputmode="numeric"></div>
+<div class="full-span"><label>คำนำหน้าชื่อภาษาไทย</label><div class="choice-row" id="titleGroup">
+  <label class="choice"><input type="checkbox" name="title_choice" value="นางสาว" checked> นางสาว</label>
+  <label class="choice"><input type="checkbox" name="title_choice" value="นาง"> นาง</label>
+  <label class="choice"><input type="checkbox" name="title_choice" value="นาย"> นาย</label>
+  <label class="choice"><input type="checkbox" name="title_choice" value="เด็กหญิง"> เด็กหญิง</label>
+  <label class="choice"><input type="checkbox" name="title_choice" value="เด็กชาย"> เด็กชาย</label>
+  <label class="choice"><input type="checkbox" name="title_choice" value="อื่นๆ"> อื่นๆ</label>
+</div><div id="titleOtherWrap" class="hidden" style="margin-top:8px"><input id="titleOther" name="title_other" placeholder="ระบุคำนำหน้าชื่ออื่นๆ"></div></div>
+<div><label>ชื่อ-นามสกุล ภาษาไทย *</label><input name="name_th" required></div>
+<div><label>ชื่อ-นามสกุลภาษาอังกฤษ</label><input name="name_en"></div>
+<div><label>เพศ</label><select name="sex"><option value="">เลือก</option><option>ชาย</option><option>หญิง</option><option>ไม่ระบุ</option></select></div>
+<div><label>วันเดือนปีเกิด</label><input name="dob" type="date"></div>
+<div><label>คณะ</label><select name="faculty" id="faculty"><option value="">เลือกคณะ</option><option>คณะเกษตร กำแพงแสน</option><option>คณะวิศวกรรมศาสตร์ กำแพงแสน</option><option>คณะศิลปศาสตร์และวิทยาศาสตร์</option><option>คณะศึกษาศาสตร์และพัฒนศาสตร์</option><option>คณะวิทยาศาสตร์การกีฬาและสุขภาพ</option><option>คณะอุตสาหกรรมบริการ</option><option>คณะสัตวแพทยศาสตร์</option><option>อื่นๆ</option></select></div>
+<div id="facultyOtherWrap" class="hidden"><label>ระบุคณะ/หน่วยงานอื่นๆ</label><input name="faculty_other" id="facultyOther"></div>
+<div><label>น้ำหนัก (กก.)</label><input name="weight_kg" type="number" min="1" max="400" step="0.1"></div>
+<div><label>ส่วนสูง (ซม.)</label><input name="height_cm" type="number" min="30" max="250" step="0.1"></div>
+<div><label>เบอร์โทร *</label><input name="phone" inputmode="numeric" pattern="[0-9]+" required></div>
+<div><label>กรุ๊ปเลือด</label><select name="blood_group"><option value="">เลือก</option><option>O</option><option>A</option><option>B</option><option>AB</option></select></div>
+</div>
+<h2>ผู้ปกครอง / คนในครอบครัว</h2><div class="grid">
+<div><label>ชื่อผู้ปกครอง/คนในครอบครัว</label><input name="family_name"></div>
+<div><label>เบอร์โทร</label><input name="family_phone" inputmode="numeric" pattern="[0-9]+"></div>
+<div><label>ความสัมพันธ์</label><select name="family_relation"><option value="">เลือก</option><option>บิดา</option><option>มารดา</option><option>อื่นๆ</option></select></div>
+</div>
+<h2>ข้อมูลสุขภาพ</h2><div class="grid">
+<div><label>โรคประจำตัว</label><textarea name="chronic_disease" placeholder="ถ้าไม่มีให้พิมพ์ ไม่มี"></textarea></div>
+<div><label>การแพ้ยา</label><textarea name="drug_allergy" placeholder="ชื่อยา / ถ้าไม่มีให้พิมพ์ ไม่มี"></textarea></div>
+<div><label>แพ้อาหาร</label><textarea name="food_allergy" placeholder="อาหารที่แพ้ / ถ้าไม่มีให้พิมพ์ ไม่มี"></textarea></div>
+<div><label>ระบุอาการแพ้</label><textarea name="allergy_symptoms" placeholder="เช่น ผื่น หายใจลำบาก หน้าบวม"></textarea></div>
+</div>
+<h2>ข้อมูลจากบัตรประชาชน</h2><div><label>ที่อยู่ตามบัตรประชาชน</label><textarea name="address_idcard"></textarea></div>
+<p class="muted">กรุณาตรวจสอบข้อมูลก่อนส่ง โดยเฉพาะชื่อ เลขบัตรประชาชน และเบอร์โทร</p><div id="msg"></div><button id="submitBtn" type="submit">ส่งข้อมูลและรับเลขคิว</button>
+</form>
+<div id="success" class="card hidden"><div class="ok" style="text-align:center">ลงทะเบียนสำเร็จ</div><div id="queue" class="queue"></div><div class="notice" style="text-align:center">โปรดบันทึกรหัสที่ได้เพื่อติดต่อสถานพยาบาลเมื่อรับบริการ</div></div>
+</main><script>
+const form=document.getElementById('form'), student=document.getElementById('student'), staff=document.getElementById('staff'), faculty=document.getElementById('faculty'), otherWrap=document.getElementById('facultyOtherWrap');
+function exclusivePair(a,b){a.addEventListener('change',()=>{if(a.checked)b.checked=false;else if(!b.checked)a.checked=true});b.addEventListener('change',()=>{if(b.checked)a.checked=false;else if(!a.checked)b.checked=true})}
+exclusivePair(student,staff);
+function exclusiveGroup(name, defaultValue=''){
+  const boxes=[...document.querySelectorAll(`input[name="${name}"]`)];
+  boxes.forEach(box=>box.addEventListener('change',()=>{if(box.checked)boxes.forEach(x=>{if(x!==box)x.checked=false}); if(name==='title_choice'){const otherOn=boxes.find(x=>x.value==='อื่นๆ')?.checked;document.getElementById('titleOtherWrap').classList.toggle('hidden',!otherOn)}}));
+  if(defaultValue){const d=boxes.find(x=>x.value===defaultValue);if(d)d.checked=true}
+  return boxes;
+}
+const statusBoxes=exclusiveGroup('patient_status_choice');
+const titleBoxes=exclusiveGroup('title_choice','นางสาว');
+faculty.addEventListener('change',()=>{otherWrap.classList.toggle('hidden',faculty.value!=='อื่นๆ')});
+form.addEventListener('submit',async e=>{e.preventDefault();const msg=document.getElementById('msg');msg.textContent=''; if(!form.reportValidity())return; const fd=new FormData(form); const data=Object.fromEntries(fd.entries()); data.person_type=staff.checked?'บุคลากร':'นิสิต'; data.patient_status=statusBoxes.find(x=>x.checked)?.value||''; const title=titleBoxes.find(x=>x.checked)?.value||''; data.title_th=title==='อื่นๆ'?(document.getElementById('titleOther').value.trim()||'อื่นๆ'):title; delete data.patient_status_choice; delete data.title_choice; if(!/^\d+$/.test(data.phone)||(data.family_phone&&!/^\d+$/.test(data.family_phone))){msg.className='error';msg.textContent='เบอร์โทรต้องเป็นตัวเลขเท่านั้น';return} const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='กำลังส่ง...'; try{const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const j=await r.json();if(!r.ok)throw new Error(j.error||'บันทึกไม่สำเร็จ');form.classList.add('hidden');document.getElementById('queue').textContent=j.queue;document.getElementById('success').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})}catch(err){msg.className='error';msg.textContent=err.message}finally{btn.disabled=false;btn.textContent='ส่งข้อมูลและรับเลขคิว'}});
+</script></body></html>
